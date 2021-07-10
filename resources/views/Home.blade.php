@@ -121,4 +121,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Footer -->
   @include('Template.footer')
   @include('Template.script')
-
+</body>
+</html>
