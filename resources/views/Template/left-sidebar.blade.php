@@ -34,6 +34,9 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+        @if (auth()->user()->level=="karyawan")
+        <li class="nav-item has-treeview">
+        
         <li class="nav-item ">
           <a href="#" class="nav-link ">
             <i class="far fa-clock"></i>
@@ -57,6 +60,12 @@
             </li>
           </ul>
         </li>
+      </li>            
+      @endif 
+
+
+        
+        
 
         <li class="nav-item ">
           <a href="#" class="nav-link ">
@@ -67,27 +76,32 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
+            @if (auth()->user()->level=="karyawan")          
             <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Presensi Per Karyawan</p>
               </a>
-            </li>
+            </li>            
+            @endif
+
+            @if (auth()->user()->level=="admin")
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Presensi Keseluruhan</p>
               </a>
             </li>
+            @endif
           </ul>
         </li>
 
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{route('logout')}}" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              Simple Link
+              Logout
               <span class="right badge badge-danger">New</span>
             </p>
           </a>
