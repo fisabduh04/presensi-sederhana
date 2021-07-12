@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{route('simpan-keluar')}}" class="nav-link">
                 <i class="fas fa-sign-out-alt"></i>                
                 <p>Presensi Keluar</p>
               </a>
