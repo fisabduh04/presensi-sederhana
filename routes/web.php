@@ -30,6 +30,9 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'CekLevel:admin,karyawan']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('filter-data', [PresensiController::class, 'halamanrekap'])->name('filter-data');
+    Route::get('filter-data/{tglawal}/{tglakhir}', [PresensiController::class, 'tampildatakeseluruhan'])->name('filter-data-keseluruhan');
+    Route::get('filter-data/{tglawal}/{tglakhir}/{id}', [PresensiController::class, 'tampildataperkaryawan'])->name('data-perkaryawan');
 });
 
 Route::group(['middleware' => ['auth', 'CekLevel:karyawan']], function () {
@@ -37,4 +40,6 @@ Route::group(['middleware' => ['auth', 'CekLevel:karyawan']], function () {
     Route::get('/presensi-masuk', [PresensiController::class, 'index'])->name('presensi-masuk');
     Route::get('/presensi-keluar', [PresensiController::class, 'keluar'])->name('simpan-keluar');
     Route::post('/ubah-presensi', [PresensiController::class, 'presensipulang'])->name('ubah-presensi');
+    // Route::get('filter-data', [PresensiController::class, 'halamanrekap'])->name('filter-data');
+    // Route::get('filter-data/{tglawal}/{tglakhir}', [PresensiController::class, 'tampildatakeseluruhan'])->name('filter-data-keseluruhan');
 });

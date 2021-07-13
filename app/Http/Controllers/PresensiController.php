@@ -24,17 +24,6 @@ class PresensiController extends Controller
     {
         return view('presensi.keluar');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -88,7 +77,7 @@ class PresensiController extends Controller
             $presensi->update($dt);
             return redirect('presensi-keluar');
         } else {
-            @dd("sudah ada");
+            $presensi->update($dt);
         }
 
         return redirect('presensi-masuk');
@@ -99,9 +88,9 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function halamanrekap()
     {
-        //
+        return view('presensi.halaman-rekap');
     }
 
     /**
@@ -110,10 +99,7 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -122,10 +108,7 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -133,8 +116,15 @@ class PresensiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    public function tampildatakeseluruhan($tglawal, $tglakhir)
     {
-        //
+        $presensi = Presensi::whereBetween('tgl', [$tglawal, $tglakhir])->orderBy('tgl', 'asc')->get();
+        return view('presensi.rekap-karyawan', compact('presensi'));
+    }
+    public function tampildataperkaryawan($tglawal, $tglakhir, $id)
+    {
+        $presensi = Presensi::where('user_id', $id)->whereBetween('tgl', [$tglawal, $tglakhir])->orderBy('tgl', 'asc')->get();
+        return view('presensi.rekap-karyawan', compact('presensi'));
     }
 }

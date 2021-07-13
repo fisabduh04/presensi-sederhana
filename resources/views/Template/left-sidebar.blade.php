@@ -61,10 +61,7 @@
           </ul>
         </li>
       </li>            
-      @endif 
-
-
-        
+      @endif        
         
 
         <li class="nav-item ">
@@ -78,7 +75,7 @@
           <ul class="nav nav-treeview">
             @if (auth()->user()->level=="karyawan")          
             <li class="nav-item">
-              <a href="#" class="nav-link ">
+              <a href="/filter-data" class="nav-link ">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Presensi Per Karyawan</p>
               </a>
@@ -87,7 +84,7 @@
 
             @if (auth()->user()->level=="admin")
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="/filter-data" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Presensi Keseluruhan</p>
               </a>
